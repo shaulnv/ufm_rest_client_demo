@@ -1,0 +1,39 @@
+openapi: 3.0.0
+servers:
+  - url: 'http://ufm.nvidia'
+info:
+  title: UFM REST API
+  version: 1.0.0
+tags:
+  - name: telemetry_management
+    description: telemetry management 
+paths:
+  /management/key_value:
+    post:
+      summary: "Add json data in format: {'key':'$KEY','value': $JSON_OBJ}"
+      tags:
+        - telemetry_management
+      operationId: updateTelemetry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+    get:
+      summary: List history
+      tags:
+        - telemetry_management
+      operationId: getAllTelemetries
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
