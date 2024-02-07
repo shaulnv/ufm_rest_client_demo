@@ -1,0 +1,15 @@
+[requires]
+libcurl/8.11.1
+uncrustify/0.78.1 
+openssl/3.3.2
+
+[tool_requires]
+cmake/3.28.1
+openapi-generator/7.8.0
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout
