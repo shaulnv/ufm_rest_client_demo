@@ -1,4 +1,5 @@
 /build
 /bin
 /lib
+.venv/
 CMakeUserPresets.json
