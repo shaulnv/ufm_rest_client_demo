@@ -5,35 +5,46 @@ info:
   title: UFM REST API
   version: 1.0.0
 tags:
-  - name: telemetry_management
-    description: telemetry management 
+  - name: events_management                                                                                         
+    description: events management
 paths:
-  /management/key_value:
+  /ufmRest/app/events/external_event:                                                                               
     post:
-      summary: "Add json data in format: {'key':'$KEY','value': $JSON_OBJ}"
-      tags:
-        - telemetry_management
-      operationId: updateTelemetry
+      summary: Trigger external event
+      tags:                                                                                                             
+        - events_management
+      description: Trigger an external event in UFM
+      operationId: publishEvent                                                                                       
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              properties:
+                event_id:
+                  type: integer
+                  description: Unique identifier for the event
+                external_event_name:
+                  type: string
+                  description: Name of the external event
+                external_event_type:
+                  type: string
+                  description: Type of the external event
+                external_event_source:
+                  type: string
+                  description: Source of the external event
+                description:
+                  type: string
+                  description: Description of the external event
+              required:
+                - event_id
+                - external_event_name
+                - external_event_type
+                - external_event_source
+                - description
       responses:
         '200':
-          description: OK
-    get:
-      summary: List history
-      tags:
-        - telemetry_management
-      operationId: getAllTelemetries
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
+          description: OK - The request was successful.
+        '404':
+          description: NOT FOUND - Event was not found (by ID).  

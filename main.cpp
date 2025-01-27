@@ -2,7 +2,7 @@
 #include <memory>
 // generated rest client
 extern "C" {
-#include <api/TelemetryManagementAPI.h>
+#include <api/EventsManagementAPI.h>
 }
 
 // c++ smart pointers, which wraps c's raws pointers
