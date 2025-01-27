@@ -1,3 +1,7 @@
+#!/bin/bash
+
+. ./activate.sh
+
 rm -rf build
 conan install . --build=missing
 cmake --preset conan-release
